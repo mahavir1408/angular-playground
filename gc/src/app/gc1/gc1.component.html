@@ -1,0 +1,24 @@
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <label for="email">Username: </label>
+    <input type="email" class="form-control" formControlName = "username">
+    <br />
+    <label for="email">Password: </label>
+    <input type="password" class="form-control" formControlName = "password">
+    <hr />
+    <button type="submit">Submit</button>
+    <button (click)="reset()">Reset</button>
+    <button class="btn btn-info" (click)="execute()">Execute</button>
+    <ngx-invisible-recaptcha #captchaElem
+        [siteKey]="siteKey"
+        (reset)="handleReset()"
+        (ready)="handleReady()"
+        (load)="handleLoad()"
+        (success)="handleSuccess($event)"
+        [useGlobalDomain]="false"
+        [type]="type"
+        [badge]="badge"
+        formControlName="recaptcha">
+    </ngx-invisible-recaptcha>
+</form>
+<h3> {{ someError }} </h3>
